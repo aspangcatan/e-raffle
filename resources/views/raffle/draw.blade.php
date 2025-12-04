@@ -133,7 +133,7 @@
             font-size: 3.5rem;
             font-weight: 800;
             color: #fff;
-            text-shadow: 
+            text-shadow:
                 0 0 10px rgba(255,215,0,0.8),
                 0 0 20px rgba(255,215,0,0.6),
                 2px 2px 4px rgba(0,0,0,0.5);
@@ -150,13 +150,13 @@
 
         @keyframes glow {
             from {
-                text-shadow: 
+                text-shadow:
                     0 0 10px rgba(255,215,0,0.8),
                     0 0 20px rgba(255,215,0,0.6),
                     2px 2px 4px rgba(0,0,0,0.5);
             }
             to {
-                text-shadow: 
+                text-shadow:
                     0 0 20px rgba(255,215,0,1),
                     0 0 30px rgba(255,215,0,0.8),
                     2px 2px 4px rgba(0,0,0,0.5);
@@ -177,7 +177,7 @@
             align-items: center;
             justify-content: center;
             user-select: none;
-            box-shadow: 
+            box-shadow:
                 0 6px 12px rgba(0, 0, 0, 0.4),
                 0 0 20px rgba(255, 215, 0, 0.3),
                 inset 0 1px 0 rgba(255,255,255,0.2);
@@ -203,7 +203,7 @@
         .digit-square:hover {
             background: linear-gradient(135deg, #0f8a5f 0%, #0d7550 100%);
             transform: translateY(-5px);
-            box-shadow: 
+            box-shadow:
                 0 10px 20px rgba(0, 0, 0, 0.5),
                 0 0 30px rgba(255, 215, 0, 0.5);
         }
@@ -220,7 +220,7 @@
             font-size: 1.8rem;
             font-weight: 700;
             border-radius: 50px;
-            box-shadow: 
+            box-shadow:
                 0 8px 15px rgba(0,0,0,0.3),
                 0 0 20px rgba(255,215,0,0.4);
             transition: all 0.3s ease;
@@ -242,7 +242,7 @@
         .btn-christmas:hover {
             background: linear-gradient(135deg, #0f8a5f 0%, #0d7550 100%);
             transform: translateY(-3px) scale(1.05);
-            box-shadow: 
+            box-shadow:
                 0 12px 25px rgba(0,0,0,0.4),
                 0 0 30px rgba(255,215,0,0.6);
         }
@@ -270,7 +270,7 @@
             padding: 25px;
             border-radius: 20px;
             border: 4px solid #c41e3a;
-            box-shadow: 
+            box-shadow:
                 0 10px 30px rgba(0,0,0,0.4),
                 0 0 40px rgba(255,215,0,0.6),
                 inset 0 2px 0 rgba(255,255,255,0.5);
@@ -279,13 +279,13 @@
 
         @keyframes winnerPulse {
             from {
-                box-shadow: 
+                box-shadow:
                     0 10px 30px rgba(0,0,0,0.4),
                     0 0 40px rgba(255,215,0,0.6),
                     inset 0 2px 0 rgba(255,255,255,0.5);
             }
             to {
-                box-shadow: 
+                box-shadow:
                     0 10px 30px rgba(0,0,0,0.4),
                     0 0 60px rgba(255,215,0,0.9),
                     inset 0 2px 0 rgba(255,255,255,0.5);
@@ -363,7 +363,7 @@
             width: 80px;
             height: 80px;
             border-radius: 8px;
-            box-shadow: 
+            box-shadow:
                 0 8px 15px rgba(0,0,0,0.3),
                 inset 0 -5px 10px rgba(0,0,0,0.2),
                 inset 0 5px 10px rgba(255,255,255,0.2);
@@ -431,8 +431,8 @@
         const winnerNameDiv = document.getElementById('winnerName');
 
         // Load audio files
-        const drumRoll = new Audio('/sounds/drum_roll.mp3');
-        const winnerSound = new Audio('/sounds/winner_fanfare.mp3');
+        const drumRoll = new Audio("{{ asset('sounds/drum_roll.mp3') }}");
+        const winnerSound = new Audio("{{ asset('sounds/winner_fanfare.mp3') }}");
 
         spinBtn.addEventListener('click', async () => {
             spinBtn.disabled = true;
@@ -451,7 +451,7 @@
             // Fetch the winner from backend
             let winner;
             try {
-                const response = await fetch('/raffle/pick-random-winner');
+                const response = await fetch("{{ route('pickRandomWinner') }}");
                 if (!response.ok) {
                     const errorData = await response.json();
                     const errorMsg = errorData.error || 'No winner found';
@@ -468,7 +468,7 @@
 
             const winnerIdStr = winner.id.toString().padStart(5, '0');
             const digits = Array(5).fill(0);
-            const spinDuration = 3000;
+            const spinDuration = 1000;
             const spinInterval = 50;
 
             const start = performance.now();

@@ -24,4 +24,4 @@ Route::post('/entries/clear', [RaffleController::class, 'clearEntries'])->name('
 Route::delete('/entries/{id}', [RaffleController::class, 'deleteEntry'])->name('raffle.entries.delete');
 
 Route::get('/raffle/winner/{id}', [RaffleController::class,'drawWinner']);
-Route::get('/raffle/pick-random-winner', [RaffleController::class, 'pickRandomWinner']);
+Route::get('/raffle/pick-random-winner', [RaffleController::class, 'pickRandomWinner'])->name('pickRandomWinner');
